@@ -1,0 +1,23 @@
+name: cricket-gpt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - ipywidgets
+  - pandas
+  - numpy
+  - plotly
+  - matplotlib
+  - scikit-learn
+  - mysql-connector-python
+  - beautifulsoup4
+  - requests
+  - langchain
+  - streamlit
+  - weasyprint
+  - pip
+  - pip:
+      - google-generativeai
+      - faiss-cpu
+      - python-dotenv

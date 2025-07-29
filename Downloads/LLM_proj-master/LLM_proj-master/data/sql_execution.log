@@ -1,0 +1,177 @@
+2025-05-12 01:07:28,972:ERROR:Error executing query: SELECT batsman AS player, COUNT(*) AS innings, SUM(batsman_runs) AS total_runs, SUM(CASE WHEN batsman_runs=4 THEN 1 END) AS fours, SUM(CASE WHEN batsman_runs=6 THEN 1 END) AS sixes, COUNT(ball) AS balls_faced FROM deliveries WHERE batsman IN ('V Kohli','RG Sharma') GROUP BY batsman;
+2025-05-12 01:07:28,972:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:29,400:ERROR:Error executing query: SELECT batsman AS player, COUNT(*) AS innings, SUM(batsman_runs) AS total_runs, SUM(CASE WHEN batsman_runs=4 THEN 1 END) AS fours, SUM(CASE WHEN batsman_runs=6 THEN 1 END) AS sixes, COUNT(ball) AS balls_faced FROM deliveries WHERE batsman IN ('MS Dhoni','S Dhawan') GROUP BY batsman;
+2025-05-12 01:07:29,400:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:29,781:ERROR:Error executing query: SELECT batsman AS player, COUNT(*) AS innings, SUM(batsman_runs) AS total_runs, SUM(CASE WHEN batsman_runs=4 THEN 1 END) AS fours, SUM(CASE WHEN batsman_runs=6 THEN 1 END) AS sixes, COUNT(ball) AS balls_faced FROM deliveries WHERE batsman IN ('AB de Villiers','CH Gayle') GROUP BY batsman;
+2025-05-12 01:07:29,797:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:30,212:ERROR:Error executing query: SELECT d.batsman, SUM(d.batsman_runs) AS total_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 GROUP BY d.batsman ORDER BY total_runs DESC LIMIT 5;
+2025-05-12 01:07:30,212:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:30,626:ERROR:Error executing query: SELECT d.batsman, SUM(d.batsman_runs) AS total_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 GROUP BY d.batsman ORDER BY total_runs DESC LIMIT 3;
+2025-05-12 01:07:30,626:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:31,088:ERROR:Error executing query: SELECT d.batsman, SUM(d.batsman_runs) AS total_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2017 GROUP BY d.batsman ORDER BY total_runs DESC LIMIT 10;
+2025-05-12 01:07:31,088:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:32,442:ERROR:Error executing query: SELECT ROUND(AVG(runs_per_match),2) AS avg_score FROM (SELECT match_id,SUM(total_runs) AS runs_per_match FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE venue='Wankhede Stadium' GROUP BY match_id) t;
+2025-05-12 01:07:32,442:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:32,806:ERROR:Error executing query: SELECT ROUND(AVG(runs_per_match),2) AS avg_score FROM (SELECT match_id,SUM(total_runs) AS runs_per_match FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE venue='Eden Gardens' GROUP BY match_id) t;
+2025-05-12 01:07:32,806:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:33,563:ERROR:Error executing query: SELECT match_id,SUM(total_runs) AS powerplay_runs FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE batting_team='Royal Challengers Bangalore' AND season=2016 AND over_balled<=6 GROUP BY match_id ORDER BY match_id;
+2025-05-12 01:07:33,563:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:33,890:ERROR:Error executing query: SELECT match_id,SUM(total_runs) AS powerplay_runs FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE batting_team='Delhi Daredevils' AND season=2015 AND over_balled<=6 GROUP BY match_id ORDER BY match_id;
+2025-05-12 01:07:33,890:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:33,894:ERROR:Error executing query: WITH t AS (SELECT COUNT(*) AS games FROM matches WHERE team1='Mumbai Indians' OR team2='Mumbai Indians'), w AS (SELECT COUNT(*) AS wins FROM matches WHERE winner='Mumbai Indians') SELECT ROUND(wins*100.0/games,2) AS win_percent FROM t,w;
+2025-05-12 01:07:33,894:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:33,903:ERROR:Error executing query: WITH t AS (SELECT COUNT(*) AS games FROM matches WHERE team1='Chennai Super Kings' OR team2='Chennai Super Kings'), w AS (SELECT COUNT(*) AS wins FROM matches WHERE winner='Chennai Super Kings') SELECT ROUND(wins*100.0/games,2) AS win_percent FROM t,w;
+2025-05-12 01:07:33,903:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:34,268:ERROR:Error executing query: SELECT d.batsman AS player,ROUND(SUM(d.batsman_runs)*100.0/COUNT(*),2) AS strike_rate FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 GROUP BY d.batsman HAVING COUNT(*)>30 ORDER BY strike_rate DESC LIMIT 1;
+2025-05-12 01:07:34,268:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:34,653:ERROR:Error executing query: SELECT d.bowler AS player,ROUND(SUM(d.total_runs)/COUNT(*)*6,2) AS economy FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2014 GROUP BY d.bowler ORDER BY economy ASC LIMIT 1;
+2025-05-12 01:07:34,653:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:35,561:ERROR:Error executing query: SELECT SUM(d.total_runs) AS conceded FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2017 AND d.bowler='JJ Bumrah';
+2025-05-12 01:07:35,561:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:36,002:ERROR:Error executing query: SELECT ROUND(SUM(total_runs)/COUNT(DISTINCT match_id)/6,2) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND over_balled BETWEEN 1 AND 6;
+2025-05-12 01:07:36,002:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:36,313:ERROR:Error executing query: SELECT m.id,SUM(total_runs) AS tot FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 GROUP BY m.id ORDER BY tot DESC LIMIT 1;
+2025-05-12 01:07:36,313:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:37,815:ERROR:Error executing query: SELECT bowling_team,SUM(wide_runs) AS wides FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 GROUP BY bowling_team ORDER BY wides DESC;
+2025-05-12 01:07:37,816:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:38,083:ERROR:Error executing query: SELECT ROUND(AVG(score),2) FROM (SELECT m.id,SUM(total_runs) AS score FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND m.venue='Eden Gardens' AND inning=1 GROUP BY m.id) x;
+2025-05-12 01:07:38,083:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:38,577:ERROR:Error executing query: SELECT ROUND(SUM(total_runs)/COUNT(*)*6,2) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND d.bowler='YS Chahal';
+2025-05-12 01:07:38,577:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:38,904:ERROR:Error executing query: SELECT MAX(partnership) FROM (SELECT match_id,inning,SUM(total_runs) AS partnership FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2013 GROUP BY match_id,inning) p;
+2025-05-12 01:07:38,904:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:39,795:ERROR:Error executing query: SELECT ROUND(SUM(wkts)/COUNT(*),2) FROM (SELECT m.id,COUNT(*) AS wkts FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 AND over_balled<=6 AND player_dismissed IS NOT NULL GROUP BY m.id) q;
+2025-05-12 01:07:39,795:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:40,083:ERROR:Error executing query: SELECT SUM(noball_runs) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 AND over_balled>=19;
+2025-05-12 01:07:40,083:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:40,454:ERROR:Error executing query: SELECT batsman,SUM(batsman_runs) AS runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.venue='Wankhede Stadium' GROUP BY match_id,batsman ORDER BY runs DESC LIMIT 1;
+2025-05-12 01:07:40,454:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:41,032:ERROR:Error executing query: SELECT ROUND(AVG(score),2) FROM (SELECT m.id,SUM(total_runs) AS score FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND inning=2 GROUP BY m.id) y;
+2025-05-12 01:07:41,032:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:41,308:ERROR:Error executing query: SELECT ROUND(COUNT(*)*100.0/(SELECT COUNT(*) FROM matches),2) FROM matches WHERE win_by_wickets>0;
+2025-05-12 01:07:41,308:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:41,644:ERROR:Error executing query: SELECT SUM(batsman_runs) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 AND d.batsman='V Kohli' AND d.bowler NOT LIKE '%% pace %%';
+2025-05-12 01:07:41,644:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:42,497:ERROR:Error executing query: SELECT batting_team,SUM(CASE WHEN batsman_runs IN (4,6) THEN batsman_runs END) AS bruns FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2013 GROUP BY batting_team ORDER BY bruns DESC LIMIT 1;
+2025-05-12 01:07:42,497:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:42,773:ERROR:Error executing query: SELECT ROUND(COUNT(*)/COUNT(DISTINCT m.id)/6,2) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE d.bowler='Rashid Khan' AND m.season=2017;
+2025-05-12 01:07:42,773:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:42,811:ERROR:Error executing query: SELECT ROUND(SUM(CASE WHEN (toss_decision='bat' AND winner=toss_winner) OR (toss_decision='field' AND winner!=toss_winner) THEN 1 END)*100.0/COUNT(*),2) FROM matches WHERE season=2015;
+2025-05-12 01:07:42,811:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:43,431:ERROR:Error executing query: SELECT SUM(extra_runs) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND d.bowling_team='Kolkata Knight Riders';
+2025-05-12 01:07:43,431:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:07:43,814:ERROR:Error executing query: SELECT m.id,SUM(total_runs) AS ppt FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE over_balled BETWEEN 1 AND 6 GROUP BY m.id ORDER BY ppt DESC LIMIT 1;
+2025-05-12 01:07:43,814:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:01,741:ERROR:Error executing query: SELECT ROUND(AVG(target/20),2) FROM (SELECT m.id,(SELECT SUM(total_runs) FROM deliveries WHERE match_id=m.id AND inning=1) AS target FROM matches m WHERE season=2017) s;
+2025-05-12 01:08:01,741:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:02,218:ERROR:Error executing query: SELECT match_id, CONCAT(batsman,' & ',non_striker) AS pair, SUM(total_runs) AS partnership FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND batting_team='Royal Challengers Bangalore' GROUP BY match_id,pair ORDER BY partnership DESC LIMIT 1;
+2025-05-12 01:08:02,218:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:02,579:ERROR:Error executing query: SELECT venue, ROUND(AVG(pp_runs),2) AS avg_pp FROM ( SELECT m.id, m.venue, SUM(total_runs) AS pp_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2014 AND inning=1 AND over_balled<=6 GROUP BY m.id ) t GROUP BY venue ORDER BY avg_pp DESC LIMIT 3;
+2025-05-12 01:08:02,579:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:02,937:ERROR:Error executing query: SELECT bowler, ROUND(SUM(total_runs)/COUNT(*)*6,2) AS economy FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2013 AND over_balled>=17 GROUP BY bowler HAVING COUNT(*)>=24 ORDER BY economy ASC LIMIT 1;
+2025-05-12 01:08:02,937:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:03,693:ERROR:Error executing query: SELECT batting_team, ROUND(SUM(CASE WHEN batsman_runs IN (4,6) THEN batsman_runs END)*100.0/SUM(total_runs),2) AS boundary_pct FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2012 GROUP BY batting_team ORDER BY boundary_pct DESC LIMIT 1;
+2025-05-12 01:08:03,693:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:04,090:ERROR:Error executing query: SELECT m.id, SUM(CASE WHEN batsman_runs IN (4,6) THEN 1 END) AS boundaries FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2011 GROUP BY m.id ORDER BY boundaries DESC LIMIT 1;
+2025-05-12 01:08:04,090:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:04,999:ERROR:Error executing query: WITH first_innings AS ( SELECT m.id, SUM(CASE WHEN inning=1 THEN total_runs END) AS target FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE season BETWEEN 2008 AND 2017 GROUP BY m.id ), second_innings AS ( SELECT d.match_id, SUM(CASE WHEN inning=2 THEN total_runs END) AS chase FROM deliveries d GROUP BY d.match_id ) SELECT m.venue, ROUND(AVG(s.chase),2) AS avg_chase FROM first_innings f JOIN second_innings s ON f.id=s.match_id JOIN matches m ON m.id=f.id WHERE f.target>180 GROUP BY m.venue ORDER BY avg_chase DESC LIMIT 1;
+2025-05-12 01:08:04,999:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:05,697:ERROR:Error executing query: SELECT ROUND(SUM(CASE WHEN total_runs=0 THEN 1 END)*100.0/COUNT(*),2) AS dot_pct FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2017 AND batting_team='Sunrisers Hyderabad' AND over_balled<=6;
+2025-05-12 01:08:05,697:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:05,698:ERROR:Error processing file: try4.csv
+2025-05-12 01:08:05,698:ERROR:[Errno 13] Permission denied: 'try4_results.csv'
+2025-05-12 01:08:05,709:ERROR:Traceback (most recent call last):
+  File "C:\Users\singh_7l8q9pm\AppData\Local\Temp\ipykernel_23672\42595641.py", line 54, in process_sql_file
+    df.to_csv(output_file_path, index=False)
+  File "c:\Users\singh_7l8q9pm\anaconda3\lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "c:\Users\singh_7l8q9pm\anaconda3\lib\site-packages\pandas\core\generic.py", line 3967, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+  File "c:\Users\singh_7l8q9pm\anaconda3\lib\site-packages\pandas\io\formats\format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "c:\Users\singh_7l8q9pm\anaconda3\lib\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+  File "c:\Users\singh_7l8q9pm\anaconda3\lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+PermissionError: [Errno 13] Permission denied: 'try4_results.csv'
+
+2025-05-12 01:08:16,169:ERROR:Error executing query: SELECT batsman AS player, COUNT(*) AS innings, SUM(batsman_runs) AS total_runs, SUM(CASE WHEN batsman_runs=4 THEN 1 END) AS fours, SUM(CASE WHEN batsman_runs=6 THEN 1 END) AS sixes, COUNT(ball) AS balls_faced FROM deliveries WHERE batsman IN ('V Kohli','RG Sharma') GROUP BY batsman;
+2025-05-12 01:08:16,169:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:16,528:ERROR:Error executing query: SELECT batsman AS player, COUNT(*) AS innings, SUM(batsman_runs) AS total_runs, SUM(CASE WHEN batsman_runs=4 THEN 1 END) AS fours, SUM(CASE WHEN batsman_runs=6 THEN 1 END) AS sixes, COUNT(ball) AS balls_faced FROM deliveries WHERE batsman IN ('MS Dhoni','S Dhawan') GROUP BY batsman;
+2025-05-12 01:08:16,528:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:16,860:ERROR:Error executing query: SELECT batsman AS player, COUNT(*) AS innings, SUM(batsman_runs) AS total_runs, SUM(CASE WHEN batsman_runs=4 THEN 1 END) AS fours, SUM(CASE WHEN batsman_runs=6 THEN 1 END) AS sixes, COUNT(ball) AS balls_faced FROM deliveries WHERE batsman IN ('AB de Villiers','CH Gayle') GROUP BY batsman;
+2025-05-12 01:08:16,860:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:17,219:ERROR:Error executing query: SELECT d.batsman, SUM(d.batsman_runs) AS total_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 GROUP BY d.batsman ORDER BY total_runs DESC LIMIT 5;
+2025-05-12 01:08:17,219:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:17,630:ERROR:Error executing query: SELECT d.batsman, SUM(d.batsman_runs) AS total_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 GROUP BY d.batsman ORDER BY total_runs DESC LIMIT 3;
+2025-05-12 01:08:17,630:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:18,067:ERROR:Error executing query: SELECT d.batsman, SUM(d.batsman_runs) AS total_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2017 GROUP BY d.batsman ORDER BY total_runs DESC LIMIT 10;
+2025-05-12 01:08:18,068:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:19,602:ERROR:Error executing query: SELECT ROUND(AVG(runs_per_match),2) AS avg_score FROM (SELECT match_id,SUM(total_runs) AS runs_per_match FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE venue='Wankhede Stadium' GROUP BY match_id) t;
+2025-05-12 01:08:19,602:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:19,968:ERROR:Error executing query: SELECT ROUND(AVG(runs_per_match),2) AS avg_score FROM (SELECT match_id,SUM(total_runs) AS runs_per_match FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE venue='Eden Gardens' GROUP BY match_id) t;
+2025-05-12 01:08:19,968:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:20,690:ERROR:Error executing query: SELECT match_id,SUM(total_runs) AS powerplay_runs FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE batting_team='Royal Challengers Bangalore' AND season=2016 AND over_balled<=6 GROUP BY match_id ORDER BY match_id;
+2025-05-12 01:08:20,690:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:21,038:ERROR:Error executing query: SELECT match_id,SUM(total_runs) AS powerplay_runs FROM deliveries JOIN matches ON deliveries.match_id=matches.id WHERE batting_team='Delhi Daredevils' AND season=2015 AND over_balled<=6 GROUP BY match_id ORDER BY match_id;
+2025-05-12 01:08:21,039:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:21,059:ERROR:Error executing query: WITH t AS (SELECT COUNT(*) AS games FROM matches WHERE team1='Mumbai Indians' OR team2='Mumbai Indians'), w AS (SELECT COUNT(*) AS wins FROM matches WHERE winner='Mumbai Indians') SELECT ROUND(wins*100.0/games,2) AS win_percent FROM t,w;
+2025-05-12 01:08:21,059:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:21,077:ERROR:Error executing query: WITH t AS (SELECT COUNT(*) AS games FROM matches WHERE team1='Chennai Super Kings' OR team2='Chennai Super Kings'), w AS (SELECT COUNT(*) AS wins FROM matches WHERE winner='Chennai Super Kings') SELECT ROUND(wins*100.0/games,2) AS win_percent FROM t,w;
+2025-05-12 01:08:21,077:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:21,489:ERROR:Error executing query: SELECT d.batsman AS player,ROUND(SUM(d.batsman_runs)*100.0/COUNT(*),2) AS strike_rate FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 GROUP BY d.batsman HAVING COUNT(*)>30 ORDER BY strike_rate DESC LIMIT 1;
+2025-05-12 01:08:21,489:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:21,859:ERROR:Error executing query: SELECT d.bowler AS player,ROUND(SUM(d.total_runs)/COUNT(*)*6,2) AS economy FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2014 GROUP BY d.bowler ORDER BY economy ASC LIMIT 1;
+2025-05-12 01:08:21,867:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:22,889:ERROR:Error executing query: SELECT SUM(d.total_runs) AS conceded FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2017 AND d.bowler='JJ Bumrah';
+2025-05-12 01:08:22,889:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:23,249:ERROR:Error executing query: SELECT ROUND(SUM(total_runs)/COUNT(DISTINCT match_id)/6,2) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND over_balled BETWEEN 1 AND 6;
+2025-05-12 01:08:23,249:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:23,620:ERROR:Error executing query: SELECT m.id,SUM(total_runs) AS tot FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 GROUP BY m.id ORDER BY tot DESC LIMIT 1;
+2025-05-12 01:08:23,620:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:24,719:ERROR:Error executing query: SELECT bowling_team,SUM(wide_runs) AS wides FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 GROUP BY bowling_team ORDER BY wides DESC;
+2025-05-12 01:08:24,719:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:25,063:ERROR:Error executing query: SELECT ROUND(AVG(score),2) FROM (SELECT m.id,SUM(total_runs) AS score FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND m.venue='Eden Gardens' AND inning=1 GROUP BY m.id) x;
+2025-05-12 01:08:25,063:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:25,749:ERROR:Error executing query: SELECT ROUND(SUM(total_runs)/COUNT(*)*6,2) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND d.bowler='YS Chahal';
+2025-05-12 01:08:25,749:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:26,118:ERROR:Error executing query: SELECT MAX(partnership) FROM (SELECT match_id,inning,SUM(total_runs) AS partnership FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2013 GROUP BY match_id,inning) p;
+2025-05-12 01:08:26,118:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:27,066:ERROR:Error executing query: SELECT ROUND(SUM(wkts)/COUNT(*),2) FROM (SELECT m.id,COUNT(*) AS wkts FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 AND over_balled<=6 AND player_dismissed IS NOT NULL GROUP BY m.id) q;
+2025-05-12 01:08:27,066:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:27,423:ERROR:Error executing query: SELECT SUM(noball_runs) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 AND over_balled>=19;
+2025-05-12 01:08:27,423:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:27,837:ERROR:Error executing query: SELECT batsman,SUM(batsman_runs) AS runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.venue='Wankhede Stadium' GROUP BY match_id,batsman ORDER BY runs DESC LIMIT 1;
+2025-05-12 01:08:27,837:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:28,449:ERROR:Error executing query: SELECT ROUND(AVG(score),2) FROM (SELECT m.id,SUM(total_runs) AS score FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND inning=2 GROUP BY m.id) y;
+2025-05-12 01:08:28,449:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:28,759:ERROR:Error executing query: SELECT ROUND(COUNT(*)*100.0/(SELECT COUNT(*) FROM matches),2) FROM matches WHERE win_by_wickets>0;
+2025-05-12 01:08:28,759:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:29,098:ERROR:Error executing query: SELECT SUM(batsman_runs) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2015 AND d.batsman='V Kohli' AND d.bowler NOT LIKE '%% pace %%';
+2025-05-12 01:08:29,098:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:30,040:ERROR:Error executing query: SELECT batting_team,SUM(CASE WHEN batsman_runs IN (4,6) THEN batsman_runs END) AS bruns FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2013 GROUP BY batting_team ORDER BY bruns DESC LIMIT 1;
+2025-05-12 01:08:30,040:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:30,357:ERROR:Error executing query: SELECT ROUND(COUNT(*)/COUNT(DISTINCT m.id)/6,2) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE d.bowler='Rashid Khan' AND m.season=2017;
+2025-05-12 01:08:30,357:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:30,409:ERROR:Error executing query: SELECT ROUND(SUM(CASE WHEN (toss_decision='bat' AND winner=toss_winner) OR (toss_decision='field' AND winner!=toss_winner) THEN 1 END)*100.0/COUNT(*),2) FROM matches WHERE season=2015;
+2025-05-12 01:08:30,409:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:31,037:ERROR:Error executing query: SELECT SUM(extra_runs) FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND d.bowling_team='Kolkata Knight Riders';
+2025-05-12 01:08:31,037:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:31,418:ERROR:Error executing query: SELECT m.id,SUM(total_runs) AS ppt FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE over_balled BETWEEN 1 AND 6 GROUP BY m.id ORDER BY ppt DESC LIMIT 1;
+2025-05-12 01:08:31,418:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:48,487:ERROR:Error executing query: SELECT ROUND(AVG(target/20),2) FROM (SELECT m.id,(SELECT SUM(total_runs) FROM deliveries WHERE match_id=m.id AND inning=1) AS target FROM matches m WHERE season=2017) s;
+2025-05-12 01:08:48,487:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:48,868:ERROR:Error executing query: SELECT match_id, CONCAT(batsman,' & ',non_striker) AS pair, SUM(total_runs) AS partnership FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2016 AND batting_team='Royal Challengers Bangalore' GROUP BY match_id,pair ORDER BY partnership DESC LIMIT 1;
+2025-05-12 01:08:48,868:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:49,220:ERROR:Error executing query: SELECT venue, ROUND(AVG(pp_runs),2) AS avg_pp FROM ( SELECT m.id, m.venue, SUM(total_runs) AS pp_runs FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2014 AND inning=1 AND over_balled<=6 GROUP BY m.id ) t GROUP BY venue ORDER BY avg_pp DESC LIMIT 3;
+2025-05-12 01:08:49,220:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:49,553:ERROR:Error executing query: SELECT bowler, ROUND(SUM(total_runs)/COUNT(*)*6,2) AS economy FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2013 AND over_balled>=17 GROUP BY bowler HAVING COUNT(*)>=24 ORDER BY economy ASC LIMIT 1;
+2025-05-12 01:08:49,553:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:50,238:ERROR:Error executing query: SELECT batting_team, ROUND(SUM(CASE WHEN batsman_runs IN (4,6) THEN batsman_runs END)*100.0/SUM(total_runs),2) AS boundary_pct FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2012 GROUP BY batting_team ORDER BY boundary_pct DESC LIMIT 1;
+2025-05-12 01:08:50,238:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:50,585:ERROR:Error executing query: SELECT m.id, SUM(CASE WHEN batsman_runs IN (4,6) THEN 1 END) AS boundaries FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2011 GROUP BY m.id ORDER BY boundaries DESC LIMIT 1;
+2025-05-12 01:08:50,585:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:51,429:ERROR:Error executing query: WITH first_innings AS ( SELECT m.id, SUM(CASE WHEN inning=1 THEN total_runs END) AS target FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE season BETWEEN 2008 AND 2017 GROUP BY m.id ), second_innings AS ( SELECT d.match_id, SUM(CASE WHEN inning=2 THEN total_runs END) AS chase FROM deliveries d GROUP BY d.match_id ) SELECT m.venue, ROUND(AVG(s.chase),2) AS avg_chase FROM first_innings f JOIN second_innings s ON f.id=s.match_id JOIN matches m ON m.id=f.id WHERE f.target>180 GROUP BY m.venue ORDER BY avg_chase DESC LIMIT 1;
+2025-05-12 01:08:51,429:ERROR:Object of type Decimal is not JSON serializable
+2025-05-12 01:08:52,073:ERROR:Error executing query: SELECT ROUND(SUM(CASE WHEN total_runs=0 THEN 1 END)*100.0/COUNT(*),2) AS dot_pct FROM deliveries d JOIN matches m ON d.match_id=m.id WHERE m.season=2017 AND batting_team='Sunrisers Hyderabad' AND over_balled<=6;
+2025-05-12 01:08:52,074:ERROR:Object of type Decimal is not JSON serializable
